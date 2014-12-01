@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="style/bootstrap.css" type="text/css" />
+     <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <header>
+            <div class="navbar-top">
+                  <div class="navbar-m">
+                      <ul><li><a href="">Customer</a>
+                          <ul>
+                              <li> <a href="CreateLedger.aspx">Create Ledger</a></li>
+                              <li> </li>
+                          </ul>
+                          </li>
+                          <li><a href="">Insert</a>
+                              <ul>
+                                  <li><a href="">Data</a></li>
+                                  <li><a href="">value</a></li>
+                              </ul>
+                          </li>
+                          <li>
+                             <a href="" >Edit</a>
+                              <ul>
+                                  <li> <a href="">Doc</a></li>
+                                  <li><a href="">god</a></li>
+                                  </ul>
+                              </li>
+                        <li><a href="">Display</a></li>
+                          <li><a href="">Bills</a></li>
+                          <li><a href="AdminAccount/Reports.aspx">Reports</a></li>
+                          </ul>                           
+                  </div>      
+                <div class="nav-right">
+                    Welcome  <%: Context.User.Identity.Name  %>
+                <asp:Button ID="btnOut" runat="server" Text="SignOut" OnClick="btnOut_Click" />
+
+            </div>        
+
+            </div>
+            
+        </header>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+           
+        
+        </asp:ContentPlaceHolder>
+        <footer>
+
+
+        </footer>
+    </div>
+    </form>
+</body>
+</html>
