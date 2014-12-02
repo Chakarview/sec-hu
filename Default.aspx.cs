@@ -23,7 +23,7 @@ public partial class _Default : System.Web.UI.Page
         if(FormsAuthentication.Authenticate(UserName.Text, Password.Text))
         {
             FormsAuthentication.RedirectFromLoginPage(UserName.Text, false);
-            Response.Redirect("Home.aspx");
+            Response.Redirect("CreateLedger.aspx");
         }
         else
         {

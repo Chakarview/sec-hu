@@ -12,7 +12,9 @@ public partial class Home : System.Web.UI.Page
         if(!IsPostBack)
         {
             Tab1.CssClass = "Clicked";
-            MainView.ActiveViewIndex = 0;
+            MainView.ActiveViewIndex = 5;
+            mstatus.Items.Add("Meter OK");
+            mstatus.Items.Add("Meter Damaged");
              
         }
         
@@ -96,4 +98,8 @@ public partial class Home : System.Web.UI.Page
 
     }
 
+    protected void bfee_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }

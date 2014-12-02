@@ -165,3 +165,8 @@ h4 {
 .Clicked{ float:left;display:block;padding:8px;background-color:#0094ff;color:white;cursor:pointer; }
 .viewtable{ width:100%;border-width:1px;border-style:solid; }
 .crlab{ font-size:14px; font-weight:500; }
+.crlab1{ font-size:14px; font-weight:500; margin-left:10px;}
+.waterc{color:red;  }
+.tablerow {height:50px;}
+.btnselect{float:right;}
+ 

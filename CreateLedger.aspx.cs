@@ -45,6 +45,7 @@ public partial class CreateLedger : System.Web.UI.Page
             cno.Open();
             var aded = cm.ExecuteNonQuery();
             EResult.Text = aded.ToString() + "Record Inserted.";
+            Response.Redirect("Home.aspx");
 
         }
         catch (Exception err)
