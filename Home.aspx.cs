@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+ 
 
 public partial class Home : System.Web.UI.Page
 {
@@ -15,6 +19,47 @@ public partial class Home : System.Web.UI.Page
             MainView.ActiveViewIndex = 5;
             mstatus.Items.Add("Meter OK");
             mstatus.Items.Add("Meter Damaged");
+            
+            string SelectSQL = "Select * from Alotte";
+            string connectionString = WebConfigurationManager.ConnectionStrings["Dom"].ConnectionString;
+            SqlConnection cno = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand(SelectSQL,cno);
+            SqlDataReader reader;
+
+            try
+            {
+                cno.Open();
+                reader = cmd.ExecuteReader();
+                
+                while (reader.Read())
+                {
+                    uniid.Text  = reader["Al_ID"].ToString();
+
+                }
+
+                reader.Close();
+            }
+            catch(Exception err)
+            {
+                rserr.Text = "Error reading database.";
+                rserr.Text += err.Message;
+
+
+
+            }
+            finally
+            {
+                cno.Close();
+
+            }
+           
+
+
+
+
+
+
              
         }
         
@@ -105,6 +150,34 @@ public partial class Home : System.Web.UI.Page
 
     protected void recon_Click(object sender, EventArgs e)
     {
+        string InsertSql = "INSERT INTO Reconnect(Al_ID,ReceiptDateR,ReceiptNoR,BookNoR,ReconnectionR) VALUES ('" + uniid.Text + "', '" + datepicker11.Text + "','" + rcpttno.Text + "','" + bkkno.Text + "','" + reconfee.Text + "') ";
+        string connectionString = WebConfigurationManager.ConnectionStrings["Dom"].ConnectionString;
+        SqlConnection cno = new SqlConnection(connectionString);
+
+        SqlCommand cm = new SqlCommand(InsertSql, cno);
+
+
+
+        try
+        {
+            cno.Open();
+            var aded = cm.ExecuteNonQuery();
+            rserr.Text = aded.ToString() + "Data is save sucessfully. .";
+            
+
+
+        }
+        catch (Exception err)
+        {
+            rserr.Text = "Error during insert record.";
+            rserr.Text += err.Message;
+
+        }
+        finally
+        {
+            cno.Close();
+
+        }
 
 
     }

@@ -7,25 +7,26 @@
     <link rel="stylesheet" href="" />
     <script>
   $(function() {
-      $("#datepicker").datepicker();
-      $("#datepicker1").datepicker();
-      $("#datepicker2").datepicker();
-      $("#datepicker3").datepicker();
-      $("#datepicker4").datepicker();
-      $("#datepicker5").datepicker();
-      $("#datepicker6").datepicker();
-      $("#datepicker7").datepicker();
-      $("#datepicker8").datepicker();
-      $("#datepicker9").datepicker();
-      $("#datepicker10").datepicker();
-      $("#datepicker11").datepicker();
+      $("#<%=datepicker.ClientID %>").datepicker();
+      $("#<%=datepicker1.ClientID %>").datepicker();
+      $("#<%=datepicker2.ClientID %>").datepicker();
+      $("#<%=datepicker3.ClientID %>").datepicker();
+      $("#<%=datepicker4.ClientID %>").datepicker();
+      $("#<%=datepicker5.ClientID %>").datepicker();
+      $("#<%=datepicker6.ClientID %>").datepicker();
+      $("#<%=datepicker7.ClientID %>").datepicker();
+      $("#<%=datepicker8.ClientID %>").datepicker();
+      $("#<%=datepicker9.ClientID %>").datepicker();
+      $("#<%=datepicker10.ClientID %>").datepicker();
+      $("#<%=datepicker11.ClientID %>").datepicker();
   });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
       <div class="">
     <table style="width:100%;">
-        <tr>
+        <tr>         
+            <tr> <td> <asp:TextBox ID="uniid" runat="server" />  <asp:Label ID="rserr" runat="server" /></td></tr> 
             <td>
                 <asp:Button Text="Water"  ID="Tab1" BorderStyle="None" CssClass="Initial" runat="server" OnClick="Tab1_Click" />
                 <asp:Button Text="Sewer" ID="Tab2" BorderStyle="None" CssClass="Initial" runat="server" OnClick="Tab2_Click" />
@@ -34,8 +35,10 @@
                 <asp:Button Text="Disconnect" ID="Tab5" BorderStyle="None" CssClass="Initial" runat="server" OnClick="Tab5_Click" />
                 <asp:Button Text="Reconnect" ID="Tab6" BorderStyle="None" CssClass="Initial" runat="server" OnClick="Tab6_Click" />
                 <asp:MultiView ID="MainView" runat="server" >
+
                     <asp:View ID="lstView" runat="server">
                         <table class="viewtable" >
+                            
                             <tr class="tablerow">
                               <td>Water Connection Fees</td>
                                 <td><asp:TextBox ID="waterf" runat="server" /><asp:RequiredFieldValidator ID="water" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="waterf"></asp:RequiredFieldValidator></td>
@@ -45,7 +48,7 @@
                                 <td><asp:TextBox ID="charg" runat="server" /><asp:RequiredFieldValidator ID="charge" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="charg"></asp:RequiredFieldValidator>
                                   
                                 </td>
-                               
+                    
                             </tr>
 
                             <tr class="tablerow">
@@ -63,7 +66,7 @@
                                 <td><asp:TextBox ID="pcharge" runat="server" /><asp:RequiredFieldValidator ID="panalty" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="pcharge"></asp:RequiredFieldValidator></td>
                                 <td>Water Sanction No.</td>
                                 <td><asp:TextBox ID="watersan" runat="server" /><asp:RequiredFieldValidator ID="sanction" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="watersan"></asp:RequiredFieldValidator></td>
-                                <td>Water San Date</td> <td> <p><input type="text" id="datepicker"  /> </p></td>
+                                <td>Water San Date</td> <td> <p><asp:TextBox runat="server" id="datepicker"  /> </p></td>
                                      
                                 <td>
                                     
@@ -87,14 +90,14 @@
                             <tr class="tablerow">
                                 <td>Preview Balance</td>
                                 <td><asp:TextBox ID="pbal" runat="server" /><asp:RequiredFieldValidator ID="pbalance" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="pbal"></asp:RequiredFieldValidator></td>
-                                <td>Last Reading Date</td><td> <p><input type="text" id="datepicker1"  /> </p></td>
+                                <td>Last Reading Date</td><td> <p><asp:TextBox runat="server" id="datepicker1"  /> </p></td>
                                  
                                 <td>Book No.</td><td><asp:TextBox ID="book" runat="server" /><asp:RequiredFieldValidator ID="bookno" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="book"></asp:RequiredFieldValidator></td>
                     
                                 
                             </tr>
                             <tr>
-                                <td>Receipt Date</td><td> <p><input type="text" id="datepicker2"  /> </p></td>
+                                <td>Receipt Date</td><td> <p><asp:TextBox runat="server" id="datepicker2"  /> </p></td>
                                 <td>Receipt No.</td><td><asp:TextBox ID="receiptno" runat="server" /><asp:RequiredFieldValidator ID="receipt" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="receiptno"></asp:RequiredFieldValidator></td>
 
 
@@ -133,7 +136,7 @@
                             <tr class="tablerow">
                                 <td>Sewer Sanction No</td>
                                 <td><asp:TextBox ID="sewersno" runat="server" /><asp:RequiredFieldValidator ID="sewerno" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="sewersno"></asp:RequiredFieldValidator></td>
-                                <td>Sewer Sanction Date</td><td> <p><input type="text" id="datepicker3"  /> </p></td>
+                                <td>Sewer Sanction Date</td><td> <p><asp:TextBox runat="server" id="datepicker3"  /> </p></td>
                                  
                                 <td>WC</td>
                                 <td><asp:TextBox ID="wc" runat="server" /><asp:RequiredFieldValidator ID="wcc" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="wc"></asp:RequiredFieldValidator></td>
@@ -151,7 +154,7 @@
 
                                   <td>Book No.</td><td><asp:TextBox ID="bno" runat="server" /><asp:RequiredFieldValidator ID="booknn" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="bno"></asp:RequiredFieldValidator></td>
                               <td>Receipt No.</td><td><asp:TextBox ID="recptnoo" runat="server" /><asp:RequiredFieldValidator ID="Rnoo" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="recptnoo"></asp:RequiredFieldValidator></td>
-                            <td>Receipt Date</td><td> <p><input type="text" id="datepicker4"  /> </p></td>
+                            <td>Receipt Date</td><td> <p><asp:TextBox runat="server" id="datepicker4"  /> </p></td>
 
                             </tr>
                     <tr> <td> </td><td></td><td><br /><br /><asp:Button Height="40px" Width="130px" ID="Button1"  runat="server" OnClick="suwater_Click" Text="Save" BorderColor="White" ForeColor="#000066"  /><br /><br /></td><td></td></tr>
@@ -179,11 +182,11 @@
                                 <td><asp:TextBox ID="tch" runat="server" /><asp:RequiredFieldValidator ID="tchh" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="tch"></asp:RequiredFieldValidator></td>
                                 <td>Receipt No.</td>
                                 <td><asp:TextBox ID="rnon" runat="server" /><asp:RequiredFieldValidator ID="reciptnn" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="rnon"></asp:RequiredFieldValidator></td>
-                              <td>Receipt Date</td><td> <p><input type="text" id="datepicker5"  /> </p></td>
+                              <td>Receipt Date</td><td> <p><asp:TextBox runat="server" id="datepicker5"  /> </p></td>
                                  </tr>
                                                 <tr class="tablerow"><td><h4><u>Occupation</u></h4></td></tr>
                               <tr class="tablerow">
-                              <td>Date</td><td> <p><input type="text" id="datepicker6"  /> </p></td>
+                              <td>Date</td><td> <p><asp:TextBox runat="server" id="datepicker6"  /> </p></td>
                                 <td></td>
                                 <td>Occupation No.</td>
                                 <td><asp:TextBox ID="occnn" runat="server" /><asp:RequiredFieldValidator ID="occupn" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="occnn"></asp:RequiredFieldValidator></td>
@@ -200,12 +203,12 @@
                                 <td><asp:TextBox ID="metern" runat="server" /><asp:RequiredFieldValidator ID="meternnm" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="metern"></asp:RequiredFieldValidator></td>
                                 <td>Receipt No.</td>
                                 <td><asp:TextBox ID="rcptno" runat="server" /><asp:RequiredFieldValidator ID="rcptt" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="rcptno"></asp:RequiredFieldValidator></td>
-                                <td>Installation Date</td><td> <p><input type="text" id="datepicker7"  /> </p></td>
+                                <td>Installation Date</td><td> <p><asp:TextBox runat="server" id="datepicker7"  /> </p></td>
                                 
                                
                             </tr>
                             <tr class="tablerow">
-                              <td>Receipt Date</td><td> <p><input type="text" id="datepicker8"  /> </p></td>
+                              <td>Receipt Date</td><td> <p><asp:TextBox runat="server" id="datepicker8"  /> </p></td>
                                
                                 <td>Initial Reading</td>
                                 <td><asp:TextBox ID="initred" runat="server" /><asp:RequiredFieldValidator ID="initialred" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="initred"></asp:RequiredFieldValidator></td>
@@ -224,11 +227,11 @@
                      <asp:View ID="View5" runat="server">
                         <table class="viewtable" >
                             <tr class="tablerow">
-                              <td>Disconnection Date</td><td> <p><input type="text" id="datepicker9"  /> </p></td>
+                              <td>Disconnection Date</td><td> <p><asp:TextBox runat="server" id="datepicker9"  /> </p></td>
                                  
                                 <td>Reading</td>
                                 <td><asp:TextBox ID="readng" runat="server" /><asp:RequiredFieldValidator ID="readingf" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="readng"></asp:RequiredFieldValidator></td>
-                                <td>Receipt Date</td><td> <p><input type="text" id="datepicker10"  /> </p></td>
+                                <td>Receipt Date</td><td> <p><asp:TextBox runat="server" id="datepicker10"  /> </p></td>
                                 
                                
                             </tr>
@@ -253,7 +256,7 @@
                      <asp:View ID="View6" runat="server">
                         <table class="viewtable" >
                             <tr class="tablerow">
-                              <td>Receipt Date</td>  <td> <p><input type="text" id="datepicker11"  /> </p></td></tr>
+                              <td>Receipt Date</td>  <td> <asp:TextBox id="datepicker11"  runat="server" /> </td></tr>
                           <tr class="tablerow"><td>Receipt No.</td>
                                 <td><asp:TextBox ID="rcpttno" runat="server" /><asp:RequiredFieldValidator ID="rcpttnn1" runat="server" ErrorMessage="*Error" CssClass="waterc" ControlToValidate="rcpttno"></asp:RequiredFieldValidator></td>
                 </tr>  <tr class="tablerow"><td>Book No</td><td><asp:TextBox ID="bkkno" runat="server" /><asp:RequiredFieldValidator ID="bkknomn" runat="server" CssClass="waterc" ErrorMessage="*Error" ControlToValidate="bkkno"></asp:RequiredFieldValidator></td>

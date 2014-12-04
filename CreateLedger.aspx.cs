@@ -17,19 +17,73 @@ public partial class CreateLedger : System.Web.UI.Page
 
             appFor.Items.Add("Water");
             appFor.Items.Add("Sewer");
-
-            lstsec.Items.Add("Sec1");
-            lstsec.Items.Add("Sec2");
-
-            lstplot.Items.Add("1 Acre");
-            lstplot.Items.Add("2 Acre");
+                  
 
             lstType.Items.Add("Domestic");
+
+
+            FillAuthorList();
+
+
+
+
+
         }
         
 
     }
+
+    private void FillAuthorList()
+    {
+        lstsec.Items.Clear();
+        lstplot.Items.Clear();
+        
+
+        string selectSQL = "SELECT * FROM FillData ";
+        string connectionString = WebConfigurationManager.ConnectionStrings["Dom"].ConnectionString;
+        SqlConnection cno = new SqlConnection(connectionString);
+
+        SqlCommand cm = new SqlCommand(selectSQL, cno);
+        SqlDataReader reader;
+
+        try
+        {
+            cno.Open();
+            reader = cm.ExecuteReader();
+            while (reader.Read())
+            {
+                ListItem item = new ListItem();
+                item.Value = reader["Sector"].ToString(); 
+                lstsec.Items.Add(item);
+                ListItem itemA = new ListItem();
+                itemA.Value = reader["PlotSize"].ToString();
+                lstplot.Items.Add(itemA);
+
+
+            }
+            reader.Close();
+
+
+        }
+        catch (Exception err)
+        {
+            EResult.Text = "Please enter sector and plot size.";
+            EResult.Text += err.Message;
+
+        }
+        finally
+        {
+            cno.Close();
+        
+        }
+
+
     
+    
+    
+    }
+
+
     protected void cre_Click(object sender, EventArgs e)
     {
         string InsertSql = "INSERT INTO Alotte(AppStatus,Name,Sect,PlotNu,PlotSize,Floor,AlotteType)VALUES('" + appFor.SelectedItem.Text + "','" + lstTextbox.Text + "','" + lstsec.SelectedItem.Text + "','" + TextboxA.Text + "','"+ lstplot.SelectedItem.Text +"','"+ TextboxB.Text +"','"+ lstType.SelectedItem.Text +"') ";
@@ -44,8 +98,9 @@ public partial class CreateLedger : System.Web.UI.Page
         {
             cno.Open();
             var aded = cm.ExecuteNonQuery();
-            EResult.Text = aded.ToString() + "Record Inserted.";
+            EResult.Text = aded.ToString() + " Ledger is save.";
             Response.Redirect("Home.aspx");
+            
 
         }
         catch (Exception err)
@@ -65,4 +120,5 @@ public partial class CreateLedger : System.Web.UI.Page
 
 
     }
+     
 }

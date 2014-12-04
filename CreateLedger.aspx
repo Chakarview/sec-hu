@@ -24,7 +24,7 @@
                         <asp:TextBox ID="TextboxB" runat="server" />
                         Type  <asp:DropDownList ID="lstType" runat="server" />
                       </p><br />
-                    <asp:Button  ID="cre" runat="server" Text="Create" OnClick="cre_Click" />
+                    <asp:Button  ID="cre" runat="server" Text="Save" OnClick="cre_Click" CssClass="crebt" /> 
 
                 </div>
                 <asp:Label ID="EResult" runat="server" />
